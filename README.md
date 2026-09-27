@@ -22,6 +22,8 @@ For hosting, configure these environment variables:
 
 This app uses a local SQLite database and in-memory Express sessions. Deploy it as a single persistent service, not a serverless or horizontally scaled app. Account datasets are lost if the database volume is ephemeral; users will need to sign in again after a process restart.
 
+For persistent hosting on Render, connect this repository using **New + > Blueprint**. The root `render.yaml` configures the Node web service, generates `SESSION_SECRET`, and mounts a persistent disk for the SQLite database. Render requires a paid web service plan for persistent disks; check the current pricing before creating the service. Use the generated `onrender.com` URL after the first deployment. Data created in the previous Vercel deployment is not migrated.
+
 Do not commit `.env` files, SQLite databases, or `node_modules`.
 
 ## Python analysis

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: aura-telemetry
+    runtime: node
+    plan: 0.5c-512mb
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_PATH
+        value: /var/data/delivery_database.db
+    disk:
+      name: aura-data
+      mountPath: /var/data
+      sizeGB: 1
