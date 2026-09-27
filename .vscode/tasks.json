@@ -1,0 +1,36 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Audit production dependencies",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"audit",
+				"--omit=dev"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install Git for Windows (user scope)",
+			"type": "shell",
+			"command": "winget",
+			"args": [
+				"install",
+				"--id",
+				"Git.Git",
+				"--exact",
+				"--source",
+				"winget",
+				"--scope",
+				"user",
+				"--accept-source-agreements",
+				"--accept-package-agreements",
+				"--silent"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

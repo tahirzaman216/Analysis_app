@@ -1,0 +1,21 @@
+{
+  "name": "fyp-delivery-analytics-webapp",
+  "version": "1.0.0",
+  "description": "Node.js dashboard web app for the delivery analytics and forecasting model",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "sql.js": "^1.10.3",
+    "multer": "^2.0.2",
+    "exceljs": "^4.4.0",
+    "csv-parse": "^7.0.3",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.18.2"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}

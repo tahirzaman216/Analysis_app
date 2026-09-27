@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Data | Aura Telemetry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="brand-mark"></div>
+          <div class="name-wrap">
+            <div class="app-name">Aura Telemetry</div>
+            <div class="status">Live Sync</div>
+          </div>
+        </div>
+        <nav class="top-nav">
+          <a class="nav-link" href="/dashboard">Overview</a>
+          <a class="nav-link active" href="/upload">Upload</a>
+          <a class="nav-link" href="/sales-analytics">Measures</a>
+          <a class="nav-link" href="/product-analytics">Categories</a>
+          <a class="nav-link" href="/customer-analytics">Segments</a>
+          <a class="nav-link" href="/forecasting">Trends</a>
+          <a class="nav-link" href="/reports">Reports</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell container">
+      <div class="page-intro">
+        <h1>Upload Data</h1>
+        <p>Upload a business dataset. Columns are detected automatically; no fixed schema is required.</p>
+      </div>
+
+      <div class="card chart-card">
+        <div class="grid-2">
+          <div class="card side-panel">
+            <div class="section-title">Import a dataset</div>
+            <div class="row upload-pickers" style="margin-top: 16px; gap: 14px;">
+              <input class="visually-hidden" id="csv-file" type="file" accept=".csv,text/csv" />
+              <input class="visually-hidden" id="excel-file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+              <button class="primary-btn" data-file-picker="csv-file" type="button">Choose CSV</button>
+              <button class="secondary-btn" data-file-picker="excel-file" type="button">Choose Excel (.xlsx)</button>
+            </div>
+            <div class="list-item upload-file-row" aria-live="polite">
+              <div>
+                <strong id="selected-file-name">No file selected</strong>
+                <div class="muted" id="selected-file-size">CSV or Excel XLSX • Maximum 50 MB</div>
+              </div>
+              <span class="badge warn" id="upload-file-status">Waiting</span>
+            </div>
+            <label class="replace-confirm"><input id="replace-data-check" type="checkbox" /> Replace the active dataset and its dashboard metrics</label>
+            <button class="primary-btn" id="import-file-button" type="button" disabled>Validate and import</button>
+            <p class="upload-message" id="upload-message" role="status" aria-live="polite"></p>
+          </div>
+
+          <div class="card side-panel">
+            <div class="section-title">Automatic analysis</div>
+            <div class="list">
+              <div class="list-item"><span>Infer dates, numbers, and categories</span><span class="badge success">Automatic</span></div>
+              <div class="list-item"><span>Measure missing values and data completeness</span><span class="badge success">Automatic</span></div>
+              <div class="list-item"><span>Summarize numeric business measures</span><span class="badge success">Automatic</span></div>
+              <div class="list-item"><span>Find category and time-based patterns</span><span class="badge success">When available</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card chart-card mt-16">
+        <div class="section-title">Uploaded Data Preview</div>
+        <table class="table" style="margin-top: 16px;">
+          <thead id="sample-head"><tr><th>Loading columns...</th></tr></thead>
+          <tbody id="sample-rows"><tr><td>Loading sample rows...</td></tr></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

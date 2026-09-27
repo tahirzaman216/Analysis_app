@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Aura Telemetry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="brand-mark"></div>
+          <div class="name-wrap">
+            <div class="app-name">Aura Telemetry</div>
+            <div class="status">Live Sync</div>
+          </div>
+        </div>
+
+        <nav class="top-nav">
+          <a class="nav-link active" href="/dashboard">Overview</a>
+          <a class="nav-link" href="/upload">Upload</a>
+          <a class="nav-link" href="/sales-analytics">Measures</a>
+          <a class="nav-link" href="/product-analytics">Categories</a>
+          <a class="nav-link" href="/customer-analytics">Segments</a>
+          <a class="nav-link" href="/forecasting">Trends</a>
+          <a class="nav-link" href="/reports">Reports</a>
+        </nav>
+
+        <div class="profile-wrap">
+          <button class="user-pill" id="profile-trigger" type="button" aria-expanded="false" aria-controls="profile-menu">
+            <div class="avatar" id="profile-avatar">?</div>
+            <span id="profile-name">Workspace user</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="profile-menu" id="profile-menu" hidden>
+            <form id="profile-form">
+              <label class="profile-label" for="profile-email">Email address</label>
+              <input class="profile-input" id="profile-email" type="email" name="email" autocomplete="email" required />
+              <label class="profile-label" for="profile-name-input">Detected display name</label>
+              <input class="profile-input" id="profile-name-input" name="displayName" maxlength="50" required />
+              <button class="profile-save" type="submit">Save profile</button>
+            </form>
+            <button class="profile-signout" id="signout-button" type="button">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell container">
+      <div class="page-intro">
+        <h1 id="overview-title">Dataset Overview</h1>
+        <p id="overview-subtitle">Business intelligence generated from your uploaded data.</p>
+      </div>
+
+      <section class="kpi-grid" id="generic-kpis" data-analytics-page>
+        <div class="card kpi"><div class="kpi-label">Dataset</div><div class="kpi-value">Loading...</div></div>
+      </section>
+
+      <section class="hero" data-analytics-page>
+        <div class="card chart-card">
+          <div class="chart-header">
+            <div class="section-title" id="trend-title">Date Trend</div>
+            <span class="chip" id="trend-count">Loading...</span>
+          </div>
+          <div class="chart-box">
+            <svg viewBox="0 0 560 240" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="lineFill" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#8083ff" stop-opacity="0.38"/>
+                  <stop offset="100%" stop-color="#8083ff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <g opacity="0.25" stroke="#6d7285" stroke-dasharray="4 7">
+                <line x1="0" y1="40" x2="560" y2="40"/>
+                <line x1="0" y1="110" x2="560" y2="110"/>
+                <line x1="0" y1="180" x2="560" y2="180"/>
+              </g>
+              <path id="monthly-area" d="" fill="url(#lineFill)"/>
+              <path id="monthly-line" d="" fill="none" stroke="#c0c1ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle id="monthly-latest" cx="0" cy="0" r="5" fill="#4edea3"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card side-panel">
+          <div class="section-title">Category Highlights</div>
+          <div class="list" id="category-highlights"><div class="list-item">Loading inferred categories...</div></div>
+        </div>
+      </section>
+
+      <section class="card chart-card" data-analytics-page>
+        <div class="chart-header"><div class="section-title">Dataset Fields</div><span class="chip" id="dataset-filename">Loading...</span></div>
+        <div class="table-scroll"><table class="table"><thead><tr><th>Field</th><th>Inferred Type</th><th>Unique Values</th><th>Missing</th><th>Example Values</th></tr></thead>
+          <tbody id="field-rows"><tr><td colspan="5">Loading field profile...</td></tr></tbody>
+        </table></div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

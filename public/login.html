@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Aura Telemetry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dark">
+    <div class="auth-shell">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="brand-mark" style="margin: 0 auto 16px;"></div>
+          <h1 id="auth-heading">Welcome back</h1>
+          <p id="auth-description">Sign in to your private workspace.</p>
+        </div>
+
+        <div class="input-group">
+          <div class="label-row">
+            <span>Corporate Identity</span>
+            <span class="muted">Account email</span>
+          </div>
+          <div class="field">
+            <span class="icon">@</span>
+            <input id="login-email" type="email" autocomplete="username" required />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-row">
+            <span>Master Passkey</span>
+            <span class="muted">At least 10 characters</span>
+          </div>
+          <div class="field">
+            <span class="icon">🔒</span>
+            <input id="password-input" type="password" autocomplete="current-password" />
+            <button id="toggle-password" class="toggle-visibility" type="button">Show</button>
+          </div>
+        </div>
+
+        <button class="primary-btn" id="workspace-signin" type="button">Sign In to Private Workspace →</button>
+        <button class="secondary-btn mt-16" id="toggle-auth-mode" type="button">Create a new account</button>
+        <p class="auth-note">Each account has its own profile and uploaded data. External identity providers are not connected.</p>
+        <p class="upload-message" id="auth-message" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
