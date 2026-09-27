@@ -11,7 +11,7 @@ const session = require('express-session');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const databasePath = process.env.DATABASE_PATH || path.join(__dirname, 'delivery_database.db');
+const databasePath = process.env.DATABASE_PATH || (process.env.VERCEL ? '/tmp/delivery_database.db' : path.join(__dirname, 'delivery_database.db'));
 const isProduction = process.env.NODE_ENV === 'production';
 if (isProduction && !process.env.SESSION_SECRET) {
   throw new Error('SESSION_SECRET must be set when NODE_ENV is production.');
